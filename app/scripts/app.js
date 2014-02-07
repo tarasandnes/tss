@@ -1,5 +1,7 @@
 'use strict';
 
+Parse.initialize("1oA8NuZk07HxiFfGo3CcJk7hxs12DKJFLIxr1uUl", "YldusaJJ0XAlyRMYcamxoxlqRhoziU0sVWF9mGyy");
+
 angular.module('tssApp', [
   'ngCookies',
   'ngResource',
