@@ -1,36 +1,42 @@
 <div class="header">
-  <ul class="nav nav-pills pull-right">
-    <li class="active"><a ng-href="#">Home</a></li>
-    <li><a ng-href="#">About</a></li>
-    <li><a ng-href="#">Contact</a></li>
-  </ul>
-  <h3 class="text-muted">tss</h3>
-</div>
+    <p>Ok let me take it from here</p>
 
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!</a></p>
-</div>
+    <p>1</p>
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
+    <p>2</p>
 
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
+    <p>3</p>
 
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
-</div>
+    <p>4</p>
 
-<div class="footer">
-  <p>♥ from the Yeoman team</p>
+    <p>I'm so! excited to be adding an angular expression here: {{3+99}} </p>
+
+    <p>There are {{getBooks()}} books in the collection</p>
+
+    <div ui-sortable ng-model="books">
+        <p ng-repeat="book in books track by $index">
+            <input type="text" ng-model="book">
+            <input ng-click="removeToDo($index)" type="button" value="X">
+        </p>
+    </div>
+
+    <form ng-submit="addToDo()">
+        <input type="text" ng-model="bookToAdd">
+        <input type="submit" value="Add">
+    </form>
+
+    <FORM action="http://somesite.com/prog/adduser" method="post">
+        <P>
+            <LABEL for="firstname">First name: </LABEL>
+            <INPUT type="text" id="firstname"><BR>
+            <LABEL for="lastname">Last name: </LABEL>
+            <INPUT type="text" id="lastname"><BR>
+            <LABEL for="email">email: </LABEL>
+            <INPUT type="text" id="email"><BR>
+            <INPUT type="radio" name="sex" value="Male"> Male<BR>
+            <INPUT type="radio" name="sex" value="Female"> Female<BR>
+            <INPUT type="submit" value="Send"> <INPUT type="reset">
+        </P>
+    </FORM>
+
 </div>
