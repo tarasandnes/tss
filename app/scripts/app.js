@@ -4,6 +4,11 @@ Parse.initialize("1oA8NuZk07HxiFfGo3CcJk7hxs12DKJFLIxr1uUl", "YldusaJJ0XAlyRMYca
 
 //alert("Looks like thus change stayed");
 
+
+// some global setup variables
+
+var backendType = "static";
+
 angular.module('tssApp', [
         'ui',
         'ngCookies',

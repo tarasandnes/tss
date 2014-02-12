@@ -1,21 +1,37 @@
 <div class="header">
-    <p>Ok let me take it from here</p>
+    <p>Ok let me take it from here, OK</p>
+    <hr>
+    <p> ng-model="name" puts a property in memory called "name", and then just after name in the curly brackets is an
+        indication to BIND to this name property &lt; type="text" ng-model="name"/> {name} </p>
 
-    <p>1</p>
+    <input type="text" ng-model="name"/> {{name | uppercase}}
+    <br>
+    <hr> <!-- ------------------------------------------------------------------------------------------------------------- -->
+    <p> ng-init is a crude way to set up some stuff, some variables etc. You would normally put this in a
+        controller </p>
 
-    <p>2</p>
 
-    <p>3</p>
-
-    <p>4</p>
+    <div ng-init="names=['kendall','ELizabeth','Ilga']">
+        <ul ng-repeat="personName in names">
+            <li>{{personName}}</li>
+        </ul>
+    </div>
+    <hr> <!-- ------------------------------------------------------------------------------------------------------------- -->
+    <p> Note below is an expession but you cannot put conditional logic in there, nor should one ever do that in a
+        view! </p>
 
     <p>I'm so! excited to be adding an angular expression here: {{3+99}} </p>
-
+    <hr> <!-- ------------------------------------------------------------------------------------------------------------- -->
     <p>There are {{getBooks()}} books in the collection</p>
 
     <div ui-sortable ng-model="books">
-        <p ng-repeat="book in books track by $index">
-            <input type="text" ng-model="book">
+        <p>lets filter the books by this:<input ng-model="filterText" value="huh"></p>
+
+        <!-- NOTE in the line below! filterText is not in single quotes but author is. I think thats because filterText is
+        almost a global property of this scope, whereas author is a property of a specific instance of the array being looped through.
+         So kinda of using a dot sybtax -->
+        <p ng-repeat="book in books | filter:filterText | orderBy:'author'">
+            <input type="text" ng-model="book.author">{{filterText}}
             <input ng-click="removeToDo($index)" type="button" value="X">
         </p>
     </div>
