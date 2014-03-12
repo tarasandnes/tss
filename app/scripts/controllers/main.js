@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('tssApp')
-    .controller('MainCtrl', function ($scope) {
+myTssApp.controller('MainCtrl', function ($scope,getBooksFactory) {
         $scope.awesomeThings = [
             'HTML5 Boilerplate',
             'AngularJS',
@@ -13,28 +12,41 @@ angular.module('tssApp')
 
         }
 
+    var init = function () { // dont have to do init() just nice way to orhanise setting up stuff by using this private function
         switch (backendType) {
             case "static" :
                 //alert("Yes switch says we are indeed static");
-                $scope.books = [
-                    {author: "Kendall", title: "Kendall is a superhero", location: "Los Angeles", date: "09/10/2013"},
-                    {author: "Elizabeth", title: "Liz is a sexy", location: "Los Mantra", date: "09/10/2012"},
-                    {author: "Oliver", title: "Oli was born genius", location: "San Fransico", date: "09/10/2011"},
-                    {author: "Kendall", title: "Kendall is a superhero", location: "Portlan", date: "09/09/2013"}
-                ];
+                $scope.books = getBooksFactory.getBooks();
         }
+
+    }
+
+    init();
+
+
 
 
         //'Oliver goes potty', 'Elizabeth goes potty', 'Johann goes potty', 'Kenny goes poopy'];
 
-        $scope.getBooks = function () {
+        $scope.getNrBooks = function () {
             return $scope.books.length;
         };
 
 
         $scope.addToDo = function () {
-            $scope.books.push($scope.bookToAdd);
-            $scope.bookToAdd = '';
+            var bookToAdd = {};
+            bookToAdd.author = $scope.newBook.author;
+            bookToAdd.title = $scope.newBook.title;
+            bookToAdd.location = $scope.newBook.location;
+            bookToAdd.date = $scope.newBook.date;
+
+
+            $scope.books.push(bookToAdd);
+
+            $scope.newBook.author = "";
+            $scope.newBook.title = "";
+            $scope.newBook.location = "";
+            $scope.newBook.date = "";
             //alert ("Just clicked it" + $scope.todotoAdd);
         };
 

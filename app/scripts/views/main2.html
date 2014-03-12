@@ -3,7 +3,6 @@ And notice that the controller can set up a scope object. But when the view does
 a property to that scope object. So shit gets added to scope by controller and view. as
 
 -->
-
 <div class="header">
     <p>Ok let me take it from here, OK</p>
     <hr>
@@ -18,8 +17,8 @@ a property to that scope object. So shit gets added to scope by controller and v
 
 
     <div ng-init="names=['kendall','ELizabeth','Ilga']">
-        <ul ng-repeat="personName in names">
-            <li>{{personName}}</li>
+        <ul ui-sortable >
+            <li ng-repeat="personName in names">{{personName}}</li>
         </ul>
     </div>
     <hr> <!-- ------------------------------------------------------------------------------------------------------------- -->
@@ -28,7 +27,7 @@ a property to that scope object. So shit gets added to scope by controller and v
 
     <p>I'm so! excited to be adding an angular expression here: {{3+99}} </p>
     <hr> <!-- ------------------------------------------------------------------------------------------------------------- -->
-    <p>There are {{getNrBooks()}} books in the collection</p>
+    <p>There are {{getBooks()}} books in the collection</p>
 
     <div ng-model="books">
         <!-- Note below the filter.name. You cant write that in normal javascript but putting it here means angular will create a property
@@ -41,32 +40,19 @@ a property to that scope object. So shit gets added to scope by controller and v
         almost a global property of this scope, whereas author is a property of a specific instance of the array being looped through.
          So kinda of using a dot syntax -->
         <ul ui-sortable>
-            <li ng-repeat="book in books | filter:filter.name | orderBy:'author'">{{book.author | uppercase}} - {{book.title}} - {{book.location}} - {{book.date | date:'longDate'}}</li>
+            <li ng-repeat="book in books | filter:filter.name | orderBy:'author'">{{book.author | uppercase}} - {{book.title}} - {{book.date | date:'longDate'}}</li>
         </ul>
     </div>
 
     <form ng-submit="addToDo()">
-        <label>Author</label>
-        <input type="text" ng-model="newBook.author">
-        </p>
-        <label>Title</label>
         <input type="text" ng-model="newBook.title">
-        </p>
-        <label>Location</label>
-        <input type="text" ng-model="newBook.location">
-        </p>
-        <label>Date</label>
-        <input type="text" ng-model="newBook.date">
-        </p>
         <input type="submit" value="Add">
     </form>
-
-
-
     <!-- Note there's no .html in the name coz thats not how it was defined in config-->
     <a href="#/training">Go to training</a>
 
     <hr/>
+
 
     <FORM action="http://somesite.com/prog/adduser" method="post">
         <P>
